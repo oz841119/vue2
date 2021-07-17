@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <h2>{{name}}</h2>
+    </div>
+
+    <script>
+        const app = new Vue({ //編程範式：聲明式編程
+            el: '#app', //用於掛載要管理的元素
+            data: { //定義數據
+                message: '你好',
+                name: '我是劉德華'
+            }
+        })
+    </script>
+
+    <!-- 
+    以前透過原生JS或JQ操作元素的作法(編程範式：命令式編)
+    1.創建div元素 設置id屬性
+    2.定義變量message
+    3.將message變量放在div元素中顯示
+    4.若修改數據 則也要在元素中替換
+    -->
+</body>
+
+</html>

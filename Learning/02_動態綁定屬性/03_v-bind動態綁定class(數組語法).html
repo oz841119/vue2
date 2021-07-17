@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .fz14 {
+            font-size: 14px;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2 class="fz14" :class="['red' , 'blue']">{{message}}</h2>
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: '相較物件語法 > 將v-bind:class的值由物件轉為數組 一般用的較少',
+            }
+        })
+    </script>
+</body>
+
+</html>

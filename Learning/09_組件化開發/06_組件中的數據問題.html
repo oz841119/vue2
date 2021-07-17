@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h3>數據傳輸探討問題: 組件可以直接訪問vue實例數據嗎？</h3>
+        </br>
+        <h4>1. 組件是一個「單獨功能模塊」的封裝</h4>
+        <p>這個模塊有屬於自己的HTML模板，也應有自己的data數據</p>
+        </br>
+        <h4>2. 組件數據該保存在哪裏？</h4>
+        <p> 組件不能直接訪問vue實例的數據，即使可以訪問，數據也會變得非常臃腫</p>
+        <p> 組件應有一個地方是用來保存組件數據的</p>
+        </br>
+        <h4>3. 組件數據如何保存？</h4>
+        <p> 與vue實例data類似，也有一個data屬性，但他應是一個方法函數並返回一個實例(物件)，內保存著對應的數據</p>
+        <p> 組件應有一個地方是用來保存組件數據的</p>
+    </div>
+    <div id="app" style="color: red">
+        <cpntag></cpntag>
+    </div>
+
+    <template id='cpn'>
+        <div>
+            <h4>{{message}}</h4>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+
+            data: {
+
+            },
+            components: {
+                cpntag: {
+                    template: cpn,
+                    data() {
+                        return {
+                            message: '由組件內的data返回的數據'
+                        }
+                    }
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

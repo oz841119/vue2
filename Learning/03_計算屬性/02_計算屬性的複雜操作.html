@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>計算所有書籍的價格總和</h2>
+        <ul>
+            <li v-for="items in books">{{items.name + '：' + items.price}}元</li>
+        </ul>
+        <h1>總價格：{{totalPrice}}</h1>
+    </div>
+</body>
+
+<!-- 引入Vue -->
+<script src="../js/vue.js"></script>
+<script>
+    // 创建Vue实例
+    new Vue({
+        el: '#app',
+        data: {
+            books: [{
+                id: 100,
+                name: 'JavaScript基礎應用',
+                price: 299
+            }, {
+                id: 101,
+                name: 'JavaScript高級應用',
+                price: 399
+            }, {
+                id: 102,
+                name: '五年學會Vue.js3.0',
+                price: 699
+            }, {
+                id: 103,
+                name: '一天學會react 成為senior工程師',
+                price: 49
+            }]
+        },
+        computed: {
+            totalPrice: function() {
+                let result = 0;
+                for (let i = 0; i < this.books.length; i++) {
+                    result += this.books[i].price
+                }
+                return result;
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <cpntag></cpntag>
+        <cpntag></cpntag>
+        <cpntag></cpntag>
+    </div>
+
+    <h4 style="color: red">組件中的data之所以是函數 就是為了組件複用時防止數據共享 </br>
+        上方展示三個組件實例 並不會因為使用同一個方法造成數據一起變動</br>
+        涉及地址值、棧內存等，data的返回值若是一個函數，在重複調用時是返回新的物件
+    </h4>
+    </br>
+    <div>
+        <h4>回顧： 原生JS示例：</br>
+            https://www.bilibili.com/video/BV15741177Eh?p=58&spm_id_from=pageDriver</h4>
+        <p>
+            funtion fun(){return {name: '劉德華' , gender: '男'}}</br>
+            let obj1 = fun();</br>
+            let obj2 = fun();</br>
+            此例宣告變量為物件時，在棧內存是創建兩個物件</br>
+            且兩個變量的地址值並非指向同一個 棧內存的兩個相同物件的地址值也非同一個 </br>
+            驗證：修正obj1.name 比較內容</br>
+            obj1.name = '張學友'</br>
+            console.log(obj1) // name: '張學友', gender: '男'</br>
+            console.log(obj2) // name: '劉德華', gender: '男'</br>
+            </br>
+            但當我們宣告一個物件(obj)並賦值給一個變量 並使用方法返回這個物件的變量並賦值給其他變量（不是直接返回函數)</br>
+            那麼這些變量將指向同一個物件 因為他們有相同的地址
+        </p>
+    </div>
+
+
+
+    <template id="cpn">
+        <div>
+            <h4>當前計數: {{counter}}</h4>
+            <button @click="decrement">-</button>
+            <button @click="increment">+</button>
+        </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        // 1. 創建並註冊組件
+        Vue.component('cpntag', {
+            template: cpn,
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                }
+            }
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            }
+        });
+
+
+        // 原生JS示例
+        function fun() {
+            return {
+                name: '劉德華',
+                gender: '男'
+            };
+        }
+        let obj1 = fun();
+        let obj2 = fun();
+    </script>
+</body>
+
+</html>

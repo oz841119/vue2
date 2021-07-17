@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-if="isShow">如果true 則顯示我</h2>
+        <h2 v-else>如果false 則顯示我</h2>
+        <button @click="click">切換isShow: boolean</button>
+        <!-- v-else沒給定變量為何能判斷? 配對關係待理解 -->
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            isShow: true,
+        },
+        methods: {
+            click() {
+                this.isShow = !this.isShow;
+            }
+        }
+    });
+</script>
+
+</html>

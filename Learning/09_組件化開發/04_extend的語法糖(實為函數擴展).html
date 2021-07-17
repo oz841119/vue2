@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <cpntag></cpntag>
+        <cpntag2></cpntag2>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        // 將Vue.extend()方法直接在Vue.component()註冊時內創建 
+        Vue.component('cpntag', {
+            template: `<div><p>(全)將Vue.extend()方法直接在Vue.component()註冊時內創建</p></div>`
+        })
+
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpntag2: {
+                    template: `<div><p>(局)將Vue.extend()方法直接在Vue.component()註冊時內創建</p></div>`
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

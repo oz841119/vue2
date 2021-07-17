@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="itemName in names">{{itemName}}</li>
+        </ul>
+        <ul>
+            <li v-for="(itemName, index) in names">{{index+1}} - {{itemName}}</li>
+        </ul>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            names: ['劉德華', '梁朝偉', '周星馳', '梅艷芳', '張學友', '古巨基', '鄭伊健']
+        },
+        methods: {
+
+        }
+    });
+</script>
+
+</html>

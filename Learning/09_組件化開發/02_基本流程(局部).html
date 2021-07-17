@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .cr {
+            color: red;
+            font-size: 14px;
+            line-height: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>
+        組件化的基本流程</br>
+        1. 創建組件構造器物件 - Vue.extend({template(模板): ''})</br>
+        </br>
+        2. 註冊組件(全局組件) - Vue.component('標籤名稱', 構造器物件)</br>
+        2-1 . 註冊組件(局部組件) - 在實例或構造器內使用components屬性</br>
+        </br>
+        3. 使用組件 - html輸入標籤名稱 (在掛載vue實例的元素才可使用組件)</br>
+        3-1. 在全局註冊的組件構造器可以在任何掛載vue的元素下使用，但在vue實例下註冊的局部組件構造器只能在該實例掛載的元素下使用 </br>
+    </h4>
+    <div id="app">
+        <mycpn class="cr"></mycpn>
+    </div>
+
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        // 1. 創建組件構造器物件
+        const cpn = Vue.extend({
+            template: ` 
+            <div>
+            <h2>我是標題</h2>
+            <p>我是段落</p>
+            </div>`
+        })
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                mycpn: cpn //標籤名: 組件構造器
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

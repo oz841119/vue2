@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <!-- 複習：表單的value為提交回傳的內容 -->
+    <div id="app">
+        <label for="male"><input type="radio" id="male" value="男" v-model="gender">男</label>
+        <label for="female"><input type="radio" id="female" value="女" v-model="gender">女</label>
+        <h4>你選擇的是: {{gender}}</h4>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            gender: ""
+        },
+        methods: {
+
+        }
+    });
+</script>
+
+</html>

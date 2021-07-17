@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小案例</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        li {
+            float: left;
+            margin-left: 15px;
+            list-style: none;
+            cursor: pointer;
+        }
+        
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <ul>
+            <li v-for="(items, index) in movies" :class="{red: currentIndex === index}" @click="liclick(index)">{{items}}</li>
+        </ul>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: '完成電影列表及點擊電影名稱後呈現紅色',
+                movies: ['古惑仔', '整人專家', '無間道', '炸彈專家', '黑金', '天下有情人'],
+                currentIndex: -1,
+            },
+            methods: {
+                liclick: function(index) {
+                    this.currentIndex = index;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

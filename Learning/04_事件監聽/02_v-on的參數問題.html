@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+</head>
+<style>
+    button:nth-of-type(-n+2) {
+        font-size: 20px;
+        color: red;
+    }
+    
+    button:nth-of-type(n+3) {
+        font-size: 20px;
+        color: blue;
+    }
+    
+    #app {
+        white-space: pre-wrap;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <button @click="btn1Click()">btn1</button>
+        <button @click="btn2Click">btn2</button>
+        <button @click="btn3Click('實參')">btn3</button>
+        <button @click="btn4Click()">btn4</button>
+        <button @click="btn5Click">btn5</button>
+        <button @click="btn6Click('abc' , $event)">btn6</button>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: "未點擊"
+        },
+        methods: {
+            btn1Click() {
+                this.message = "當事件調用方法時 方法沒有形參 則v-on可以有()\n@click='btn1Click()'"
+            },
+            btn2Click() {
+                this.message = "當事件調用方法時 方法沒有形參 則v-on也可以不加()\n@click='btn2Click'"
+            },
+            btn3Click(parm) {
+                this.message = `當事件調用方法時 方法有參數 v-on有()並傳實參\n@click='btn3Click(${parm})`
+            },
+            btn4Click(parm1) {
+                this.message = `當事件調用方法時 方法有參數 v-on有()但沒傳實參\n@click='btn4Click(${parm1})`
+            },
+            btn5Click(parm2) {
+                this.message = `當事件調用方法時 方法有參數 v-on沒()\n@click='btn5Click(${parm2})  將事件對象傳入`
+            },
+            btn6Click(parm3, parm4) {
+                this.message = `若有事件對象的參數 則實參需設置為{$event}\n@click='btn6Click(${parm3} , ${parm4})`
+            }
+        }
+    });
+</script>
+
+</html>

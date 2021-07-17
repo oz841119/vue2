@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+    <style>
+        #app {
+            background-color: pink;
+        }
+        
+        #app1 {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 阻止事件冒泡 -->
+    <div id="app">
+        <div @click="divClick">{{divMessage}}
+            <button @click="btnClick()">{{btnMessage}}</button>
+        </div>
+    </div>
+    <div id="app1">
+        <div @click="divClick">{{divMessage}}
+            <button @click.stop="btnClick()">{{btnMessage}}</button>
+        </div>
+    </div>
+    </br>
+    <!-- 阻止默認行為 -->
+    <form action="UUU" id="form">
+        <input type="text">
+        <input type="submit" @click.prevent="submitClick">
+        <span>{{message}}</span>
+    </form>
+    </br>
+    <!-- 監聽鍵盤 .(系統預設鍵盤代碼 非字符代碼) 及 .once-->
+    <div id="app2">
+        <input type="text" placeholder="輸入a/b/c有監聽" @keyUp.a.b.c="keyUp">
+        <button @click.once="onceClick">修飾符once</button>
+        <span>{{message}}</span>
+    </div>
+
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            divMessage: 'div設置了一個click事件，btn是div的子級，如果點擊btn會觸發冒泡 視同btn和div皆被點擊',
+            btnMessage: '點擊'
+        },
+        methods: {
+            divClick() {
+                this.divMessage = 'div被點擊了';
+            },
+            btnClick() {
+                this.btnMessage = 'btn被點擊了';
+            }
+        }
+    });
+    let app1 = new Vue({
+        el: '#app1',
+        data: {
+            divMessage: '為btn的@clcik添加修飾符.stop(調用event.stopPropagation()) 則可以避免冒泡',
+            btnMessage: '點擊'
+        },
+        methods: {
+            divClick() {
+                this.divMessage = 'div被點擊了';
+            },
+            btnClick() {
+                this.btnMessage = 'btn被點擊了';
+            }
+        }
+    });
+    let form = new Vue({
+        el: '#form',
+        data: {
+            message: '可以透過.prevent(調用event.preventDefault())取消submit的默認跳轉行為'
+        },
+        methods: {
+            submitClick() {
+                this.message = '已提交'
+            }
+        }
+    })
+    let app2 = new Vue({
+        el: '#app2',
+        data: {
+            message: '123'
+        },
+        methods: {
+            keyUp() {
+                let kc = String.fromCharCode(event.keyCode);
+                this.message = kc
+            },
+            onceClick() {
+                alert('只能點擊一次 接著點擊皆無效果')
+            }
+        }
+    })
+</script>
+
+</html>

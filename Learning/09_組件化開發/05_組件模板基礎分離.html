@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <cpntag></cpntag>
+        <cpntag2></cpntag2>
+    </div>
+
+    <!-- 1. 使用text/x-template腳本類型儲存模板 -->
+    <script type="text/x-template" id="cpn">
+        <div>
+            <h4>模板分離: text/x-template腳本類型</h4>
+            <p>在script標籤上需給一個id讓vue調用</p>
+        </div>
+    </script>
+
+    <!-- 2. 使用<template>標籤儲存模板(推薦) -->
+    <template id=cpn2>
+        <div>
+            <h4>模板分離: &lt;template&gt;標籤</h4>
+            <p>仍須在&lt;template&gt;標籤上給一個id讓vue調用</p>
+        </div>
+    </template>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpntag: {
+                    template: '#cpn'
+                },
+                cpntag2: {
+                    // template: '#cpn2',
+                    template: cpn2 // vue2.6可以直接使用tamplate: id
+                }
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

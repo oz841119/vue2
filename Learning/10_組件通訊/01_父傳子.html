@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <!-- 透過動態綁定的方式實現數據傳遞 -->
+        <cpn v-bind:cmovies="movies" v-bind:cmessage="message"></cpn>
+    </div>
+
+
+    <template id="cpn">
+        <div>
+            <p>{{cmessage}}</p>
+            <p>{{cmovies}}</p>
+            <ul>
+                <li v-for="item in cmovies">{{item}}</li>
+            </ul>
+            {{cde}}
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const cpn = {
+            template: '#cpn',
+            // 2. 使用props方法儲存數據 並通過html綁定後接收數據
+            // props: ['cmovies', 'cmessage']  可封裝近數組 但需使用字串作為變量
+            props: { //可以使用物件 好處是可以指定類定 甚至是更多操作 例如默認值
+                cmovies: Array,
+                cmessage: {
+                    type: String,
+                    default: '未接收到數據'
+                },
+                cde: {
+                    type: String,
+                    default: '未接收到數據 這裡沒有動態綁定',
+                    required: true, // 布爾值：必須傳值 否則報錯 但仍然渲染
+                }
+            }
+        }
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: '已接收數據',
+                movies: ['家有喜事', '古惑仔', '無間道', '警察故事', 'A計畫', '賭神'],
+                de: 'aaa'
+            },
+            components: {
+                cpn, // 屬性key增強寫法 > cpn: cpn
+            },
+            // 1. 註冊在實例內組件也不能調用實例的data數據 需在組件內使用props方法
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

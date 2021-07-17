@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">{{message}}</div>
+    <div id="app2">{{message}}</div>
+    <div id="app3" v-cloak>{{message}}</div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: "如果載入速度慢 可能出現瀏覽器會先渲染HTML中的{{message}}後才被vue掛載 出現閃動問題 如下以延遲做示"
+            }
+        })
+
+        setTimeout(function() {
+            let app2 = new Vue({
+                el: "#app2",
+                data: {
+                    message: "如果載入速度慢 可能出現瀏覽器會先渲染HTML中的{{message}}後才被vue掛載 出現閃動問題(未加入v-cloak)"
+                }
+            })
+        }, 2000)
+
+        setTimeout(function() {
+            let app3 = new Vue({
+                el: "#app3",
+                data: {
+                    message: "如果載入速度慢 可能出現瀏覽器會先渲染HTML中的{{message}}後才被vue掛載 出現閃動問題 加入v-cloak可以解決這個問題 但須在css添加[v-cloak] {display: none;} 不過實際開發也不常用 因為以操作虛擬DOM為主"
+                }
+            })
+        }, 2000)
+    </script>
+</body>
+
+</html>

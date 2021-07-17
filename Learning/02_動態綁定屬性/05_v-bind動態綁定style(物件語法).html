@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h2 :style="{key(屬性名): value(屬性值)">{{message}}</h2> -->
+        <h2 :style="{fontSize: '20px' , color: 'red'}">{{message}}</h2>
+        <h2 :style="{fontSize: fontSize , color: color}">屬性值從data傳入 {{message}}</h2>
+        <h2 :style="getStyles()">調用方法 {{message}}</h2>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello',
+                fontSize: '40px',
+                color: 'blue'
+            },
+            methods: {
+                getStyles: function() {
+                    return {
+                        fontSize: this.fontSize,
+                        color: this.color
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

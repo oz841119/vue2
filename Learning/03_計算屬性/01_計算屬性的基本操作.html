@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dome</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{firstName + ' ' + lastName}}</h2>
+        <h2>{{firstName}} {{lastName}}</h2>
+        <h2>{{fullName}}</h2>
+
+    </div>
+</body>
+
+<!-- 引入Vue -->
+<script src="../js/vue.js"></script>
+<script>
+    // 创建Vue实例
+    new Vue({
+        el: '#app',
+        data: {
+            firstName: '劉',
+            lastName: '德華'
+        },
+        // 與methods有點類似，但專門用於計算屬性
+        computed: {
+            fullName: function() {
+                return this.firstName + ' ' + this.lastName;
+            }
+        }
+    });
+</script>
+
+</html>

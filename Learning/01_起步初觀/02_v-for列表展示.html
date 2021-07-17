@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">{{message}}
+        <ul>
+            <li v-for="moviesName in movies">{{moviesName}}</li>
+        </ul>
+    </div>
+
+    <button id="btn">往列表內添加電影(警察故事)</button>
+
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '電影名稱',
+                movies: ['古惑仔', '整人專家', '無間道', '炸彈專家', '黑金', '天下有情人']
+            }
+        });
+
+        // 針對btn做原生js添加內容 (為app內的movies數組添加內容)
+        let btn = document.getElementById("btn");
+        btn.onclick = function() {
+            app.movies.push("警察故事");
+        }
+    </script>
+</body>
+
+</html>

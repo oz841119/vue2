@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+</head>
+
+<body>
+    <!-- 但一般不會在html做複雜的邏輯操作 基本上都在computed做完計算 -->
+    <div id="app">
+        <h1 v-if="score>=90">{{score}}分: 優秀</h1>
+        <h1 v-else-if="score>=80">{{score}}分: 良好</h1>
+        <h1 v-else-if="score>=60">{{score}}分: 及格</h1>
+        <h1 v-else>{{score}}分: 不及格</h1>
+        <button @click="enterScore">輸入分數</button>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            score: 90,
+        },
+        methods: {
+            enterScore() {
+                let score = parseInt(prompt('請輸入分數'));
+                app.score = score;
+            }
+        }
+    });
+</script>
+
+</html>

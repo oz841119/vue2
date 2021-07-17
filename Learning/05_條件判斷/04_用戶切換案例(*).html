@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+    <style>
+        div {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        button {
+            font-size: 12px;
+            height: 23px;
+            margin-left: 20px;
+        }
+        
+        span button {
+            margin-left: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- bilibili - 最全最新Vue、Vuejs教程，从入门到精通 P35(from:coderwhy) -->
+    <!-- 這裡的input使用了一個屬性key 防止用戶輸入內容後切換時不會被清除 -->
+    <!-- 主要原因出自 Vue.js v2.6.14 虛擬DOM 及 複用的問題 -->
+    <div id="app">
+        <span v-if="isShow">
+            <label for="userName">用戶帳號：</label>
+            <input type="text" placeholder="輸入用戶帳號" id="userName" key="userName">
+            <button>送出</button>
+        </span>
+        <span v-else>
+            <label for="email">電子信箱：</label>
+            <input type="text" placeholder="輸入電子信箱" id="email" key="email">
+            <button>送出</button></span>
+        <button @click="change">帳號登錄 / 電子信箱登錄</button>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            isShow: true,
+        },
+        methods: {
+            change() {
+                this.isShow = !this.isShow;
+            }
+        }
+    });
+</script>
+
+</html>

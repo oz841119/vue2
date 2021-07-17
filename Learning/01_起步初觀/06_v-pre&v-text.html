@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-pre>{{message}} / v-pre用於告訴元素不要進行解析 {{}}mustache語法</h2>
+        <h2 v-text='message'>不會顯示內容 因為會被v-text直接覆蓋</h2>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: 'v-text 展示文本'
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .active {
+            color: red;
+        }
+        
+        .fontColor {
+            color: rgb(37, 4, 99);
+        }
+        
+        .fz14 {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2 class="active">{{message}}</h2>
+        <h2 :class="active">:class="active" - 然而這個寫法多此一舉</h2>
+        <h2 class="fz14" :class="{active: isActive , fontColor: isFontColor}">
+            常用法：</br>
+            v-bind:class="{類名1: boolean , 類名2: boolean}"</br>
+            當類名需要被添加時 boolean為true</br>
+            也可以給原生html屬性class</br>
+            會進行合併
+            <button @click="change">點擊修改類名</button>
+        </h2>
+        <h2 class="fz14" :class="getClasses()">
+            :class="getClasses()"：</br>
+            也可以直接透過方法調用</br>
+            該方法內需return一個物件</br>
+            getClasses: function() { return { active: this.isActive, fontColor: this.isFontColor } }
+            <button @click="change">點擊修改類名</button>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: "v-bind動態綁定class",
+                active: "active",
+                isActive: false,
+                isFontColor: true,
+            },
+            methods: {
+                change: function() {
+                    // this.isFontColor = false;
+                    // this.isActive = true;
+                    this.isFontColor = !this.isFontColor;
+                    this.isActive = !this.isActive;
+                },
+                getClasses: function() {
+                    return {
+                        active: this.isActive,
+                        fontColor: this.isFontColor
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

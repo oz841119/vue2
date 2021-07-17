@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app"> 單選框：
+        <label for="">
+            <input type="checkbox" id="license" v-model="isArrge">同意協議:{{isArrge}}
+        </label>
+        <button :disabled="!isArrge">下一步</button>
+    </div>
+    <div id="app2"> 複選框：
+        <label for="op1"><input type="checkbox" id="op1" value="籃球" v-model="habits">籃球</label>
+        <label for="op2"><input type="checkbox" id="op2" value="足球" v-model="habits">足球</label>
+        <label for="op3"><input type="checkbox" id="op3" value="羽毛球" v-model="habits">羽毛球</label>
+        <label for="op4"><input type="checkbox" id="op4" value="乒乓球" v-model="habits">乒乓球</label>
+        <h4>您的愛好是：{{habits}}</h4>
+    </div>
+
+    <h4 style="color: red">一般來說 單選框會對應一個布爾值 複選框會對應一個數組</h4>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                isArrge: false,
+            },
+            methods: {
+
+            }
+        });
+
+        let app2 = new Vue({
+            el: '#app2',
+            data: {
+                habits: [],
+            },
+        })
+    </script>
+</body>
+
+</html>

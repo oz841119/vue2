@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{url}} 『未加v-html』</h2>
+        <h2 v-html="url">這裡文本內容不會顯示 前面已透過v-html直接格式化內容</h2>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                url: '<a href="https://www.google.com/">Goolge搜尋</a>'
+            }
+        })
+    </script>
+</body>
+
+</html>

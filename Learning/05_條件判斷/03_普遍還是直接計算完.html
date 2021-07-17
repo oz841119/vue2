@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{result}}</h2>
+        <button @click="enterScore">輸入分數</button>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            score: 0,
+        },
+        computed: {
+            result() {
+                let message = ''
+                if (this.score >= 90) {
+                    message = `${this.score}分: 及格`
+                } else if (this.score >= 80) {
+                    message = `${this.score}分: 優秀`
+                } else if (this.score >= 70) {
+                    message = `${this.score}分: 良好`
+                } else if (this.score >= 60) {
+                    message = `${this.score}分: 及格`
+                } else {
+                    message = `${this.score}分: 不及格`
+                };
+                return message;
+            }
+        },
+        methods: {
+            enterScore() {
+                let score = parseInt(prompt('請輸入分數'));
+                app.score = score;
+            }
+        }
+    });
+</script>
+
+</html>

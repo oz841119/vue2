@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h4>
+        常用表示：伺服器傳送數組 讓用戶選擇複選 所以如果內容相當多 會透過遍歷方式操作html 而不是直接寫死</br>
+        遍歷原數組 > 將勾選的內容儲存到新的數組
+    </h4>
+    <div id="app">
+        <label v-for="item in originHabits" :for="item">
+            <input type="checkbox" :id="item" v-model="habits" :value="item">{{item}}
+        </label>
+        <h1>您選擇的是：{{habits}}</h1>
+    </div>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                originHabits: ['香蕉', '蘋果', '蓮霧', '西瓜', '龍眼', '荔枝', '水蜜桃', '柿子', '榴蓮', '木瓜', '甜桃', '葡萄', '鳳梨'],
+                habits: []
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

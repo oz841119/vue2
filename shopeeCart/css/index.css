@@ -1,0 +1,38 @@
+header {
+  background-color: #fff;
+  height: 120px;
+}
+header .header-left {
+  display: flex;
+  float: left;
+  align-items: center;
+  line-height: 120px;
+  font-size: 26px;
+  color: #ed4d2d;
+  font-weight: 400;
+}
+header .header-left .logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  background-color: pink;
+}
+header .header-left span:nth-of-type(-n+2) {
+  margin-right: 20px;
+}
+header .header-left span:nth-of-type(3) {
+  font-size: 20px;
+}
+header .header-left .line {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background-color: #ed4d2d;
+}
+header .header-right {
+  float: right;
+  line-height: 120px;
+}
+header .header-right #search {
+  width: 500px;
+}

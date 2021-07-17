@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .cr {
+            font-size: 14px;
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <cpn2></cpn2>
+    </div>
+
+    <h4>基礎原理：</br>
+        使用父子構造器註冊的組件 子構造器僅能在她之下使用</br>
+        原因是子構造器在父級渲染的時候就已經編譯完成，如果打算讓其他構造器或實例渲染，該構造器及實例會找不到該子構造器</br>
+        https://www.bilibili.com/video/BV15741177Eh?p=56
+    </h4>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        // 創建第一個組件
+        const cpn1 = Vue.extend({
+            template: `
+            <div>
+                <h4>標題1</h4>
+            </div>`
+        })
+
+        // 創建第二個組件
+        const cpn2 = Vue.extend({
+            template: `
+            <div>
+                <h4>標題2</h4>
+                <cpn1 class="cr"></cpn1>
+            </div>
+            `,
+            //在該組件內註冊第一個組件 並在模板內使用 注意： 模板內需有一個父元素 且必須寫在同一個模板內的父元素內
+            components: {
+                cpn1: cpn1
+            }
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpn2: cpn2
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

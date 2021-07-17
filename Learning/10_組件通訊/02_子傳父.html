@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <!-- 父組件模板 -->
+    <div id="app">
+        <!-- 這裡監聽的事件使用的是vue實例(父組件)內的方法 而非子組件的  -->
+        <cpn @itemclick="btnClick"></cpn>
+    </div>
+
+    <!-- 子組件模板 -->
+    <template id='cpn'>
+        <div>
+            <!-- <h2>{{cinfo}}</h2> -->
+            <!-- <h2>{{childmymessage}}</h2> -->
+            <button v-for="item in categories" @click='btnClick(item)'>{{item.name}}</button>
+        </div>
+    </template>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        // 子組件
+        const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    categories: [{
+                        id: 'a',
+                        name: '熱門推薦'
+                    }, {
+                        id: 'b',
+                        name: '數位科技'
+                    }, {
+                        id: 'c',
+                        name: '家用家電'
+                    }, {
+                        id: 'd',
+                        name: '電腦辦公'
+                    }, ]
+                }
+            },
+            methods: {
+                btnClick(item) {
+                    // 要將獲取到的item傳向父組件
+                    this.$emit('itemclick', item) //參數：自定義名稱 用於對應父組件的監聽 , 值
+                }
+            }
+
+        }
+
+        // 父組件
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                cpn
+            },
+            methods: {
+                btnClick(item) {
+                    console.log(item);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

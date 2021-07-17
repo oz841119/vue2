@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DEMO</title>
+    <style>
+        button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="nums in arr">{{nums}}</li>
+        </ul>
+        <div>複習數組方法 並了解哪些方法可以響應</div>
+        <button @click="click1">從末端添加 - push()</button>
+        <button @click="click2">從末端刪除 - pop()</button>
+        <button @click="click3">從第一個元素刪除 - shift()</button>
+        <button @click="click4">從第一個元素添加 - unshift()</button></br>
+        <button @click="click5">刪除/替換/添加等 - splice(從哪個索引開始 , 刪除幾個 , 添加元素*n)</button>
+        <button @click="click6">默認照Unicode編碼進行排序 - sort([可傳比較函數])</button>
+        <button @click="click7">反轉 - reverse()</button></br>
+        <button @click="click8" style="color:red">透過索引值更改 - this.app[2] = 999 (可clg驗證)</button>
+        <button @click="click9" style="color:blue">Vue.set(object , index , value)</button>
+    </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            arr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        },
+        methods: {
+            click1() {
+                this.arr.push('added', 'added2', 'added3');
+            },
+            click2() {
+                this.arr.pop();
+            },
+            click3() {
+                this.arr.shift();
+            },
+            click4() {
+                this.arr.unshift('added', 'added2', 'added3');
+            },
+            click5() {
+                this.arr.splice(2, 3, 'added 返回值為被刪除的元素', 'added2', 'added3');
+            },
+            click6() {
+                this.arr.sort();
+            },
+            click7() {
+                this.arr.reverse();
+            },
+            click8() {
+                this.arr[2] = 999;
+                alert(`this.arr[2] 已修改為 ${this.arr[2]} \n (Vue.js v2.6.14無法響應 但vue3已可以響應)`)
+            },
+            click9() {
+                Vue.set(this.arr, 2, '透過 Vue.set(修改的物件 , 索引 , 內容) 方法直接修改')
+            }
+
+        }
+    });
+</script>
+
+</html>

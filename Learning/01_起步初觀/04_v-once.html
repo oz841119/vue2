@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{message}} 未加v-once</h2>
+        <h2 v-once>{{message}} 加了v-once</h2>
+        <button @click="changeText">改變文本內容</button>
+    </div>
+
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                message: "看看會不會改變"
+            },
+            methods: {
+                changeText: function() {
+                    this.message = "已改變"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

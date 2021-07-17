@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+    </title>
+    <style>
+        div input:nth-of-type(2) {
+            display: inline-block;
+            width: 500px;
+            height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>https://www.bilibili.com/video/BV15741177Eh?p=46</h>
+        <div id="app">
+            <input type="text" v-model="message">
+            <h2>當用戶在輸入框輸入內容時 這裡也能響應：{{message}}</h2>
+            </br>
+            </br>
+            </br>
+            </br>
+            <h2>基本原理：v-model = v-bind and v-on的結合</h2>
+            <input type="text" v-bind:value="content" v-on:input="content = $event.target.value" placeholder="輸入內容">
+            <h2>{{content}}</h2>
+        </div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            message: '',
+            content: ''
+        },
+        methods: {
+            // userInput(event) {
+            //     this.content = event.target.value
+            // }
+        }
+    });
+</script>
+
+</html>
