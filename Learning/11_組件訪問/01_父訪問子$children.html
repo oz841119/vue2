@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h4>
+        前面提到的通訊方式都是以動態方式去做被動接收，現在要以直接訪忘的方式獲取子組件的內容</br>
+        不過一般來說$children用得比較少
+    </h4>
+    <div id="app">
+        <cpn></cpn>
+        <button @click="btnClick">按鈕</button>
+    </div>
+
+
+    <!-- ----------- -->
+    <template id="cpn">
+        <div>我是子組件</div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                btnClick() {
+                    console.log(this.$children);
+                    this.$children[0].showMessage();
+                    console.log(this.$children[0].message);
+                },
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            message: 'messageStr'
+                        }
+                    },
+                    methods: {
+                        showMessage() {
+                            console.log('showMessage');
+                        },
+                    },
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

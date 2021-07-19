@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            margin: 20px
+        }
+        
+        .fr {
+            color: red;
+        }
+        
+        .cb {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="fr">
+        <h3>父組件</h3>
+        <h4>父組件num1: {{num1}} </br>
+            父組件num2: {{num2}}
+        </h4>
+        <cpn class="cb" :number1="num1" :number2="num2" @num1change="num1change" @num2change="num2change">
+        </cpn>
+    </div>
+
+
+    <!-- ---------------------------------------- -->
+
+    <template id='cpn'>
+        <div>
+            <h3>cpn子組件</h3>
+            <h4>cpnTag - props - number1: {{number1}}</h4>
+            <h4>cpnTag - data - vumber: {{vnumber1}}</h4>
+                            <!-- 當想在input進行雙向綁定 並改變子組件props內的數據(v-model="number1")時 
+                                是可以操作 但會報錯 且vue官方也極度不建議這樣做 -->
+                            <!-- 正確做法是透過子組件的data返回一個新的值來用綁定操作 -->
+            <!-- <input type="text" v-model="vnumber1"> --> <!-- 現在要實現將用戶輸入的內容傳向父組件 -->
+            <input type="text" :value="vnumber1" @input="num1Input">
+            
+            <h4>cpnTag - props - number2: {{number2}}</h4>
+            <h4>cpnTag - data - vumber: {{vnumber2}}</h4>
+            <input type="text" :value="vnumber2" @input="num2Input">
+            <h4>雙向綁定極不建議綁定子組件的props 雖可操作但會報錯 且容易發生問題</br>
+                一般建議使用子組件的data返回一個具有props內數據的新值來綁定
+            </h4>
+        </div>
+    </template>
+
+    <!-- ---------------------------------------- -->
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                num1: 1,
+                num2: 0
+            },
+            methods: {
+                num1change(value) {
+                    this.num1 = parseFloat(value)
+                },
+                num2change(value) {
+                    this.num2 = parseFloat(value)
+                }
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    props: {
+                        number1: Number,
+                        number2: Number
+                    },
+                    data() {
+                        return {
+                            vnumber1: this.number1,
+                            vnumber2: this.number2,
+                        }
+                    },
+                    methods: {
+                        num1Input(evnet) {
+                            this.vnumber1 = event.target.value
+                            this.$emit('num1change', this.vnumber1)
+                            this.vnumber2 = this.vnumber1 * 100
+                            this.$emit('num2change', this.vnumber2)
+                        },
+                        num2Input(event) {
+                            this.vnumber2 = event.target.value
+                            this.$emit('num2change', this.vnumber2)
+                            this.vnumber1 = this.vnumber2 / 100
+                            this.$emit('num1change', this.vnumber1)
+                        }
+                    }
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

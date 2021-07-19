@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <cpn>
+
+        </cpn>
+    </div>
+
+    <!-- --------- -->
+    <template id="cpn">
+    <div>
+        <h4>{{message}}</h4>
+        <h4>{{getRootMessage}}</h4>
+    </div>
+</template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: '根元素message',
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            message: '子組件cpn的message',
+                            getRootMessage: this.$root.message
+                        }
+                    },
+                    // methods: {
+                    //     getRootMessage() {
+                    //         return this.$root.message
+                    //     }
+                    // }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
