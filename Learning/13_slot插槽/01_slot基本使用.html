@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn><button>一個按鈕</button></cpn>
+        <cpn><span>一個span標籤</span></cpn>
+        <cpn><input type="text" placeholder="一個輸入框"></cpn>
+    </div>
+
+
+    <!-- ---------- -->
+    <template id="cpn">
+        <div>
+            <h4>cpn子組件模板的h4標籤 起</h4>
+            <slot><p>slot內有默認的p標籤</p></slot>
+            <h4>cpn子組件模板的h4標籤 終</h4>
+            <!-- 擴展用 使html中的cpn標籤可以填入內容 -->
+        </div>
+    </template>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            components: {
+                cpn: {
+                    template: '#cpn'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
