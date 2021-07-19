@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn>
+            <!-- slot-scope已廢棄 可以使用v-slot替換 -->
+            <template slot-scope="slot">
+                <span v-for="item in slot.arrdata">{{item}} 、 </span>
+            </template>
+        </cpn>
+        <!-- 額外補充join() -->
+        <cpn>
+            <template v-slot="slot">
+                <span>{{slot.arrdata.join(' 、 ')}}</span>
+            </template>
+        </cpn>
+    </div>
+
+    <!-- ---------- -->
+    <template id="cpn">
+        <div>
+            <slot :arrdata="pLanguage">
+                <ul>
+                    <li v-for="item in pLanguage">{{item}}</li>
+                </ul>
+            </slot>
+        </div>
+    </template>
+    <script src=" ../js/vue.js "></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            },
+            components: {
+                cpn: {
+                    template: '#cpn',
+                    data() {
+                        return {
+                            pLanguage: ['JavaScript', 'C++', 'Java', 'C#', 'Python', 'Go', 'Swift']
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
