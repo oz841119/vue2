@@ -10,4 +10,9 @@ console.log(age);
 console.log(height);
 
 // 依賴css
-require('./css/normal.css')
+require('./css/normal.css');
+
+// 依賴less
+require('./css/special.less')
+
+document.write('Webpack打包')
