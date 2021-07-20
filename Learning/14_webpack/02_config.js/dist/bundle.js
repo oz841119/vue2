@@ -865,9 +865,9 @@ module.exports = function escape(url) {
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: Error: Cannot find module 'file-loader'\nRequire stack:\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/url-loader/dist/index.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/url-loader/dist/cjs.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/loader-runner/lib/loadLoader.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/loader-runner/lib/LoaderRunner.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/webpack/lib/NormalModule.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/webpack/lib/NormalModuleFactory.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/webpack/lib/Compiler.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/webpack/lib/webpack.js\n- /Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/webpack/bin/webpack.js\n    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:902:15)\n    at Function.Module._load (internal/modules/cjs/loader.js:746:27)\n    at Module.require (internal/modules/cjs/loader.js:974:19)\n    at require (internal/modules/cjs/helpers.js:92:18)\n    at Object.loader (/Users/chenyili/Desktop/workplace/Vuejs/Learning/14_webpack/02_config.js/node_modules/url-loader/dist/index.js:68:20)");
+module.exports = __webpack_require__.p + "779157faf8736798a68b496517f1d0f4.jpeg";
 
 /***/ })
 /******/ ]);
