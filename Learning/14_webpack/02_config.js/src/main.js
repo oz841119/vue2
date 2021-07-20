@@ -15,4 +15,14 @@ require('./css/normal.css');
 // 依賴less
 require('./css/special.less')
 
+// 使用Vue進行開發
+import Vue from 'vue'
+// ------ 
 document.write('Webpack打包')
+
+const app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Webpack'
+    }
+})
