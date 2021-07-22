@@ -15,14 +15,20 @@ require('./css/normal.css');
 // 依賴less
 require('./css/special.less')
 
+document.write('serverTest1')
+
 // 使用Vue進行開發
 import Vue from 'vue'
+// import { component } from "vue/types/umd";
+// import App from './vue/app.js'
+import App from './vue/app.vue'
 // ------ 
-document.write('Webpack打包')
 
-const app = new Vue({
+
+new Vue({
     el: '#app',
-    data: {
-        message: 'Hello Webpack'
+    template: '<App></App>',
+    components: {
+        App
     }
 })
