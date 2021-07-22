@@ -15,7 +15,7 @@ require('./css/normal.css');
 // 依賴less
 require('./css/special.less')
 
-document.write('serverTest1')
+document.write('serverTest2')
 
 // 使用Vue進行開發
 import Vue from 'vue'
