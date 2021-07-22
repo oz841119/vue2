@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1. 依賴Node及Webpack環境
 
 2. 安裝方式
@@ -7,3 +8,6 @@
         2-3-1. Use ESLint to lint your code(Y/n): 針對JS進行程式碼規範 且極度嚴格 一般不會使用 
                 使用ESLint的話: 選用某個規範或自訂規範
         2-3-2. Set up unit tests(Y/n): 單元測試
+=======
+<center>Markdown</center>
+>>>>>>> 607ecaf6a5439088e312c1ebe871627ad05347bf
