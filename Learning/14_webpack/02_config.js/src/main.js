@@ -10,4 +10,25 @@ console.log(age);
 console.log(height);
 
 // 依賴css
-require('./css/normal.css')
+require('./css/normal.css');
+
+// 依賴less
+require('./css/special.less')
+
+document.write('serverTest2')
+
+// 使用Vue進行開發
+import Vue from 'vue'
+// import { component } from "vue/types/umd";
+// import App from './vue/app.js'
+import App from './vue/app.vue'
+// ------ 
+
+
+new Vue({
+    el: '#app',
+    template: '<App></App>',
+    components: {
+        App
+    }
+})
