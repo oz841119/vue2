@@ -3,4 +3,11 @@
 2. only使用 render: h => h(App) 渲染
 >  template - parse(解析) > ast(抽象語法樹) - compile(編譯) 
 >    > rander(functions) > vdom(虛擬DOM) > 真實DOM
+<br/>
+
+#### 結論
+> compiler: template -> ast -> rander -> vdom -> UI
+> only: rander -> vdom -> UI  (性能更高 / 程式碼更少)
+<br/>
+
 ![image](readme.png)
