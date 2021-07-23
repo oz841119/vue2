@@ -3,4 +3,4 @@
 2. only使用 render: h => h(App) 渲染
 >  template - parse(解析) > ast(抽象語法樹) - compile(編譯) 
 >    > rander(functions) > vdom(虛擬DOM) > 真實DOM
-![image]readme.png
+![image](readme.png)
