@@ -8,6 +8,9 @@
 #### 結論
 > compiler: template -> ast -> rander -> vdom -> UI
 > only: rander -> vdom -> UI  (性能更高 / 程式碼更少)
+</br>
+
+回顧： https://www.bilibili.com/video/BV15741177Eh?p=96
 <br/>
 
 ![image](readme.png)
