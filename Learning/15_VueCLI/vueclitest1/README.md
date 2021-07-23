@@ -15,8 +15,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 ---------------------------
-1. 專案內的build and config皆為webpack的配置
-2. 首次架完腳手架的閱讀順序
+1. 專案內的build and config皆為webpack的配置<br/>
+2. 首次架完腳手架的閱讀順序<br/>
     2-1. package.json: scripts物件 - 了解我們可以透過命令行執行時的配置
         2-1-1. npm run build: 在node環境內執行js
             2-1-1-1. node.js主要透過C++開發 並非純是javascript 
