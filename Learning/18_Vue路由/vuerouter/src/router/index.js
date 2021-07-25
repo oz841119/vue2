@@ -1,5 +1,6 @@
 import Vue from 'vue' // 1.導入Vue
 import VueRouter from 'vue-router' // 2.導入Vue路由
+// import { component } from 'vue/types/umd'
 
 // *  導入Vue組件文件 * //
 // import Home from '../components/Home'
@@ -9,6 +10,8 @@ import VueRouter from 'vue-router' // 2.導入Vue路由
 
 // * 實現懶加載 * //
 const Home = () => import('../components/Home')
+const HomeNews = () => import('../components/HomeNews')
+const HomeMessage = () => import('../components/HomeMessage')
 const About = () => import('../components/About')
 const Sale = () => import('../components/Sale')
 const User = () => import('../components/User')
@@ -24,7 +27,21 @@ const routes = [{
     },
     {
         path: '/home',
-        component: Home
+        component: Home,
+        children: [
+            {
+                path:'', // 默認
+                redirect: 'news'
+            },
+            {
+                path:'news', // 子路由不需加/ 會自動拼接
+                component: HomeNews
+            },
+            {
+                path:'message', // 子路由不需加/ 會自動拼接
+                component: HomeMessage
+            },
+        ]
     },
     {
         path: '/about',
