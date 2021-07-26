@@ -8,7 +8,10 @@
 
 <script>// 導出
 export default {
-    name: 'About'
+  // 可以使用這種方式創建html title
+    // created(){
+    //   document.title = '關於'
+    // }
 }
 </script>
 

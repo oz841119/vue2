@@ -15,6 +15,8 @@ const HomeMessage = () => import('../components/HomeMessage')
 const About = () => import('../components/About')
 const Sale = () => import('../components/Sale')
 const User = () => import('../components/User')
+const Profile = () => import('../components/Profile')
+const Test = () => import('../components/Test')
 
 // import { component } from 'vue/types/umd' 意義不明 待釐清
 
@@ -28,6 +30,9 @@ const routes = [{
     {
         path: '/home',
         component: Home,
+        meta: {
+            title: '首頁'
+        },
         children: [
             {
                 path:'', // 默認
@@ -45,15 +50,38 @@ const routes = [{
     },
     {
         path: '/about',
-        component: About
+        component: About,
+        meta: {
+            title: '關於'
+        },
     },
     {
         path: '/sale',
-        component: Sale
+        component: Sale,
+        meta: {
+            title: '銷售'
+        },
     },
     {
         path: '/user/:userID', // 配置動態路由
-        component: User
+        component: User,
+        meta: {
+            title: '用戶'
+        },
+    },
+    {
+        path: '/profile',
+        component: Profile,
+        meta: {
+            title: '檔案'
+        },
+    },
+    {
+        path: '/test',
+        component: Test,
+        meta: {
+            title: '測試'
+        },
     }
 ]
 
@@ -63,6 +91,12 @@ const router = new VueRouter({
     mode: 'history', //將默認的hash值改為history 主要讓url的路徑不要出現#符號
     linkActiveClass: 'active' //默認(活躍中)標籤會有一個類名 可以將這個類名透過這種方式修改
 })
+router.beforeEach(
+    (to,from,next) =>  // 取得每頁的title
+        { document.title = to.matched[0].meta.title 
+          next()  // 這個next是必須調用的  這個方法之後會用來做判斷用戶是否有登陸
+        }
+)
 
 // 5. 導出
 export default router
